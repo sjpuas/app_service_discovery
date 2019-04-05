@@ -20,9 +20,9 @@ const (
 func handler(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("ping")
 
-	db := os.Getenv("DB")
+	db := os.Getenv("DB_URL")
 
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://" + db + ":27017"))
+	client, err := mongo.NewClient(options.Client().ApplyURI(db))
 	if err != nil {
 		log.Fatal(err)
 	}
